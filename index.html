@@ -219,7 +219,23 @@
     
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <h2 id="warmup-csaw-2016"><a href="#warmup-csaw-2016" class="headerlink" title="warmup_csaw_2016"></a>warmup_csaw_2016</h2><p>照例用ida打开，没发现bin&#x2F;sh，用shift+f12，发现cat flag.txt</p>
+<p>双击到达所在地址</p>
+<p>![](&#x2F;images&#x2F;warmup_csaw_2016&#x2F;屏幕截图 2023-01-15 191707-16737818253834.png)</p>
+<p>然后右键X</p>
+<p><img src="/images/warmup_csaw_2016/2023-01-15-16737819757617.png"></p>
+<p>发现输出flag的函数</p>
+<p>![](&#x2F;images&#x2F;warmup_csaw_2016&#x2F;屏幕截图 2023-01-15 192731.png)</p>
+<p>记下地址</p>
+<p>再看主函数，发现get，又是栈溢出</p>
+<p>![](&#x2F;images&#x2F;warmup_csaw_2016&#x2F;屏幕截图 2023-01-15 192918.png)</p>
+<p>查看v5地址</p>
+<p>![](&#x2F;images&#x2F;warmup_csaw_2016&#x2F;屏幕截图 2023-01-15 192954.png)</p>
+<p>需要输入64+8个字节的数据</p>
+<p>可得exp</p>
+<p>![](&#x2F;images&#x2F;warmup_csaw_2016&#x2F;屏幕截图 2023-01-15 193104.png)</p>
+<p>得到flag</p>
+
     
 
     
