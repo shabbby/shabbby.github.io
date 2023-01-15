@@ -286,16 +286,16 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h1><p>先照例把所给文件放入ida</p>
-<p>![](&#x2F;images&#x2F;rip&#x2F;屏幕截图 2023-01-15 184744-16737816976431.png)</p>
+<p><img src="/images/rip/Snipaste_2023-01-15_20-16-34.png"></p>
 <p>发现一个名为fun的函数里有system函数可以进入&#x2F;bin&#x2F;sh</p>
 <p>再看main函数的伪代码（汇编还没学会）</p>
-<p>![](&#x2F;images&#x2F;rip&#x2F;屏幕截图 2023-01-15 184935-16737817210353.png)</p>
+<p><img src="/images/rip/Snipaste_2023-01-15_20-17-08.png"></p>
 <p>看到get，以目前所学知识，大概率是栈溢出</p>
 <p>再查看栈所在位置</p>
-<p>![](&#x2F;images&#x2F;rip&#x2F;屏幕截图 2023-01-15 185133-16737817396495.png)</p>
+<p><img src="/images/rip/Snipaste_2023-01-15_20-17-59.png"></p>
 <p>发现需要输入15+8个字节可覆盖到栈</p>
 <p>再查看fun函数入口地址</p>
-<p>![](&#x2F;images&#x2F;rip&#x2F;屏幕截图 2023-01-15 190233-16737817539987.png)</p>
+<p><img src="/images/rip/Snipaste_2023-01-15_20-18-25.png"></p>
 <p>之前看别人的wp说如果存在内存空间和寄存器之间传输时，128bit(64位)必须要进行对齐（不太懂）</p>
 <p>所以exp</p>
 <p>from pwn import *</p>
