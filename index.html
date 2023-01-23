@@ -214,6 +214,66 @@
             
 
   
+    <article id="post-[第五空间2019 决赛]PWN5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="第五空间2019-决赛-PWN5"><a href="#第五空间2019-决赛-PWN5" class="headerlink" title="[第五空间2019 决赛]PWN5"></a>[第五空间2019 决赛]PWN5</h1><p><img src="/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_19-18-10.png"></p>
+<p>有printf函数，可以利用格式化字符串漏洞</p>
+<p>main函数作用是将输入数字与随机数对比，相同便可直接执行system函数。</p>
+<p>可以将随机数修改为已知数从而得到flag</p>
+<p><img src="/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_20-29-31.png"></p>
+<p>可以看到写入数据在栈的第十位</p>
+<p>再找到随机数变量所在地址，便可写出exp</p>
+<p><img src="/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_21-21-45.png"></p>
+<p>payload&#x3D;密码所在地址加%n</p>
+<p>由于p32长四个字节，所以密码是4</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/01/23/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jarvisoj_level0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
