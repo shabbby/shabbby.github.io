@@ -214,16 +214,66 @@
             
 
   
+    <article id="post-ciscn_2019_n_8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/02/04/ciscn_2019_n_8/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ciscn_2019_n_1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="ciscn-2019-n-1"><a href="#ciscn-2019-n-1" class="headerlink" title="ciscn_2019_n_1"></a>ciscn_2019_n_1</h1><p>拖入ida查看函数，发现当v2&#x3D;11.28125会运行system函数，直接获取flag</p>
-<p><img src="/ciscn_2019_n_1/Snipaste_2023-02-03_21-37-52-16754340448072.png"></p>
+<p><img src="/images/ciscn_2019_n_1/Snipaste_2023-02-03_21-37-52-16755254756741.png"></p>
 <p>但是函数里的gets是输入v1的数值，需要输入长数据溢出到v2所在地址。</p>
 <p>查看v1和v2地址</p>
-<p><img src="/ciscn_2019_n_1/Snipaste_2023-02-03_22-24-12.png"></p>
+<p><img src="/images/ciscn_2019_n_1/Snipaste_2023-02-03_22-24-12-16755254860223.png"></p>
 <p>写入44个字节给v1便可将数据写入v2</p>
 <p>exp</p>
 <p>from pwn import*</p>

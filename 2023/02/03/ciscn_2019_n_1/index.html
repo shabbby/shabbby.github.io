@@ -17,13 +17,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="ciscn_2019_n_1拖入ida查看函数，发现当v2&#x3D;11.28125会运行system函数，直接获取flag  但是函数里的gets是输入v1的数值，需要输入长数据溢出到v2所在地址。 查看v1和v2地址  写入44个字节给v1便可将数据写入v2 exp from pwn import*  io&#x3D;remote(‘node4.buuoj.cn’,29943) payloa">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://shabbby.github.io/ciscn_2019_n_1/Snipaste_2023-02-03_21-37-52-16754340448072.png">
-<meta property="og:image" content="http://shabbby.github.io/ciscn_2019_n_1/Snipaste_2023-02-03_22-24-12.png">
+<meta property="og:image" content="http://shabbby.github.io/images/ciscn_2019_n_1/Snipaste_2023-02-03_21-37-52-16755254756741.png">
+<meta property="og:image" content="http://shabbby.github.io/images/ciscn_2019_n_1/Snipaste_2023-02-03_22-24-12-16755254860223.png">
 <meta property="article:published_time" content="2023-02-02T16:09:02.472Z">
-<meta property="article:modified_time" content="2023-02-03T14:30:42.375Z">
+<meta property="article:modified_time" content="2023-02-04T15:44:53.573Z">
 <meta property="article:author" content="Shabby">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://shabbby.github.io/ciscn_2019_n_1/Snipaste_2023-02-03_21-37-52-16754340448072.png">
+<meta name="twitter:image" content="http://shabbby.github.io/images/ciscn_2019_n_1/Snipaste_2023-02-03_21-37-52-16755254756741.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -220,10 +220,10 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="ciscn-2019-n-1"><a href="#ciscn-2019-n-1" class="headerlink" title="ciscn_2019_n_1"></a>ciscn_2019_n_1</h1><p>拖入ida查看函数，发现当v2&#x3D;11.28125会运行system函数，直接获取flag</p>
-<p><img src="/ciscn_2019_n_1/Snipaste_2023-02-03_21-37-52-16754340448072.png"></p>
+<p><img src="/images/ciscn_2019_n_1/Snipaste_2023-02-03_21-37-52-16755254756741.png"></p>
 <p>但是函数里的gets是输入v1的数值，需要输入长数据溢出到v2所在地址。</p>
 <p>查看v1和v2地址</p>
-<p><img src="/ciscn_2019_n_1/Snipaste_2023-02-03_22-24-12.png"></p>
+<p><img src="/images/ciscn_2019_n_1/Snipaste_2023-02-03_22-24-12-16755254860223.png"></p>
 <p>写入44个字节给v1便可将数据写入v2</p>
 <p>exp</p>
 <p>from pwn import*</p>
@@ -357,6 +357,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2023/02/04/ciscn_2019_n_8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a href="/2023/01/23/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/" id="article-nav-older" class="article-nav-link-wrap">
