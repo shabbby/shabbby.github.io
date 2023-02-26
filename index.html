@@ -224,7 +224,20 @@
 <p>exp</p>
 <p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-26_23-27-00.png"></p>
 <p>还有一个调用mprotect函数修改内存权限的方法，等有时间补上</p>
-<h1 id="ciscn-2019-c-1"><a href="#ciscn-2019-c-1" class="headerlink" title="ciscn_2019_c_1"></a>ciscn_2019_c_1</h1>
+<h1 id="ciscn-2019-c-1"><a href="#ciscn-2019-c-1" class="headerlink" title="ciscn_2019_c_1"></a>ciscn_2019_c_1</h1><p>一道基础的ret2libc题</p>
+<p>过程为：</p>
+<p>先泄露puts地址，获得偏移量，然后得到system地址和bin&#x2F;sh地址</p>
+<p>需要注意的是函数进行了加密，由于其中有一个strlen函数，可以用&#x2F;0绕过</p>
+<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-27_01-23-19.png"></p>
+<p>payload&#x3D;’\0’+’a’*(0x50-1+8)+p64(pop_rdi)+p64(puts_got)</p>
+<p>+p64(puts_plt)+p64(main)</p>
+<p>exp：</p>
+<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-27_01-26-19.png"></p>
+<h2 id="HarekazeCTF2019-baby-rop"><a href="#HarekazeCTF2019-baby-rop" class="headerlink" title="[HarekazeCTF2019]baby_rop"></a>[HarekazeCTF2019]baby_rop</h2><p>一道比较基础的题</p>
+<p>exp：</p>
+<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-27_01-44-12.png"></p>
+<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-27_01-43-17.png"></p>
+
     
 
     
