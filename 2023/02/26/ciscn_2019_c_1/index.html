@@ -10,21 +10,19 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="bjdctf_2020_babystack 查看main函数，其中有一个read函数，读取长度由上面的scanf函数决定，所以可以输入一个很大的数，造成溢出。 发现题里给了后门函数 可以直接获取shell exp">
+  <meta name="description" content="get_started_3dsctf_2016发现有main函数里有get函数，又发现了一下叫getflag的函数，当a1和a2的数值满足条件时便可得到flag 需要注意的是，需要调用一个exit函数作为getflag的返回地址 exp  还有一个调用mprotect函数修改内存权限的方法，等有时间补上 ciscn_2019_c_1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://shabbby.github.io/2023/02/12/bjdctf_2020_babystack/index.html">
+<meta property="og:url" content="http://shabbby.github.io/2023/02/26/ciscn_2019_c_1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="bjdctf_2020_babystack 查看main函数，其中有一个read函数，读取长度由上面的scanf函数决定，所以可以输入一个很大的数，造成溢出。 发现题里给了后门函数 可以直接获取shell exp">
+<meta property="og:description" content="get_started_3dsctf_2016发现有main函数里有get函数，又发现了一下叫getflag的函数，当a1和a2的数值满足条件时便可得到flag 需要注意的是，需要调用一个exit函数作为getflag的返回地址 exp  还有一个调用mprotect函数修改内存权限的方法，等有时间补上 ciscn_2019_c_1">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://shabbby.github.io/images/bjdctf_2020_babystack/Snipaste_2023-02-12_20-33-23.png">
-<meta property="og:image" content="http://shabbby.github.io/images/bjdctf_2020_babystack/Snipaste_2023-02-12_21-47-41.png">
-<meta property="og:image" content="http://shabbby.github.io/images/bjdctf_2020_babystack/Snipaste_2023-02-12_21-49-00.png">
-<meta property="article:published_time" content="2023-02-12T11:03:59.782Z">
-<meta property="article:modified_time" content="2023-02-12T13:49:17.452Z">
+<meta property="og:image" content="http://shabbby.github.io/images/ciscn_2019_c_1/Snipaste_2023-02-26_23-27-00.png">
+<meta property="article:published_time" content="2023-02-26T14:16:11.089Z">
+<meta property="article:modified_time" content="2023-02-26T15:28:36.930Z">
 <meta property="article:author" content="Shabby">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://shabbby.github.io/images/bjdctf_2020_babystack/Snipaste_2023-02-12_20-33-23.png">
+<meta name="twitter:image" content="http://shabbby.github.io/images/ciscn_2019_c_1/Snipaste_2023-02-26_23-27-00.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -215,18 +213,17 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-bjdctf_2020_babystack" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ciscn_2019_c_1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="bjdctf-2020-babystack"><a href="#bjdctf-2020-babystack" class="headerlink" title="bjdctf_2020_babystack"></a>bjdctf_2020_babystack</h2><p><img src="/images/bjdctf_2020_babystack/Snipaste_2023-02-12_20-33-23.png"></p>
-<p>查看main函数，其中有一个read函数，读取长度由上面的scanf函数决定，所以可以输入一个很大的数，造成溢出。</p>
-<p>发现题里给了后门函数<img src="/images/bjdctf_2020_babystack/Snipaste_2023-02-12_21-47-41.png"></p>
-<p>可以直接获取shell</p>
+    <h1 id="get-started-3dsctf-2016"><a href="#get-started-3dsctf-2016" class="headerlink" title="get_started_3dsctf_2016"></a>get_started_3dsctf_2016</h1><p>发现有main函数里有get函数，又发现了一下叫getflag的函数，当a1和a2的数值满足条件时便可得到flag</p>
+<p>需要注意的是，需要调用一个exit函数作为getflag的返回地址</p>
 <p>exp</p>
-<p><img src="/images/bjdctf_2020_babystack/Snipaste_2023-02-12_21-49-00.png"></p>
-
+<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-26_23-27-00.png"></p>
+<p>还有一个调用mprotect函数修改内存权限的方法，等有时间补上</p>
+<h1 id="ciscn-2019-c-1"><a href="#ciscn-2019-c-1" class="headerlink" title="ciscn_2019_c_1"></a>ciscn_2019_c_1</h1>
     
 
     
@@ -272,7 +269,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://shabbby.github.io/2023/02/12/bjdctf_2020_babystack/" title="" target="_blank">http://shabbby.github.io/2023/02/12/bjdctf_2020_babystack/</a>
+          <a href="http://shabbby.github.io/2023/02/26/ciscn_2019_c_1/" title="" target="_blank">http://shabbby.github.io/2023/02/26/ciscn_2019_c_1/</a>
         </li>
         
         <li>
@@ -339,7 +336,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://shabbby.github.io/2023/02/12/bjdctf_2020_babystack/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://shabbby.github.io/2023/02/26/ciscn_2019_c_1/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -354,17 +351,8 @@
 
 <nav id="article-nav">
   
-    <a href="/2023/02/26/ciscn_2019_c_1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/02/05/jarvisoj_level2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/02/12/bjdctf_2020_babystack/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
