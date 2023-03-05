@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://shabbby.github.io">
-  <title>Hexo</title>
+  <title>Archives: 2023/3 | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content=""> -->
-  
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://shabbby.github.io/index.html">
+<meta property="og:url" content="http://shabbby.github.io/archives/2023/03/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Shabby">
@@ -212,611 +208,45 @@
           </div>
           <div id="js-content" class="content-ll">
             
-
   
-    <article id="post-第六周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-  <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="jarvisoj-level2-x64"><a href="#jarvisoj-level2-x64" class="headerlink" title="jarvisoj_level2_x64"></a>jarvisoj_level2_x64</h1><p>用ida打开，主函数中有一个read函数，读取长度大于buf长度，可以栈溢出。</p>
-<p>可以用ida在文件找出bin&#x2F;sh和system函数地址，再用ropgadget找到poprdi的地址</p>
-<p>exp： </p>
-<p><img src="/images/%E7%AC%AC%E5%85%AD%E5%91%A8/Snipaste_2023-03-05_21-04-01.png"></p>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2023/03/05/%E7%AC%AC%E5%85%AD%E5%91%A8/" class="archive-article-date">
+        <time datetime="2023-03-05T11:29:01.747Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-05</time>
+</a>
 
-    
+        </div>
+    	 
 
-    
+        <div class="article-info info-on-right">
+          
+          
 
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/03/05/%E7%AC%AC%E5%85%AD%E5%91%A8/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ciscn_2019_c_1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="get-started-3dsctf-2016"><a href="#get-started-3dsctf-2016" class="headerlink" title="get_started_3dsctf_2016"></a>get_started_3dsctf_2016</h1><p>发现有main函数里有get函数，又发现了一下叫getflag的函数，当a1和a2的数值满足条件时便可得到flag</p>
-<p>需要注意的是，需要调用一个exit函数作为getflag的返回地址</p>
-<p>exp</p>
-<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-26_23-27-00.png"></p>
-<p>还有一个调用mprotect函数修改内存权限的方法，等有时间补上</p>
-<h1 id="ciscn-2019-c-1"><a href="#ciscn-2019-c-1" class="headerlink" title="ciscn_2019_c_1"></a>ciscn_2019_c_1</h1><p>一道基础的ret2libc题</p>
-<p>过程为：</p>
-<p>先泄露puts地址，获得偏移量，然后得到system地址和bin&#x2F;sh地址</p>
-<p>需要注意的是函数进行了加密，由于其中有一个strlen函数，可以用&#x2F;0绕过</p>
-<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-27_01-23-19.png"></p>
-<p>payload&#x3D;’\0’+’a’*(0x50-1+8)+p64(pop_rdi)+p64(puts_got)</p>
-<p>+p64(puts_plt)+p64(main)</p>
-<p>exp：</p>
-<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-27_01-26-19.png"></p>
-<h2 id="HarekazeCTF2019-baby-rop"><a href="#HarekazeCTF2019-baby-rop" class="headerlink" title="[HarekazeCTF2019]baby_rop"></a>[HarekazeCTF2019]baby_rop</h2><p>一道比较基础的题</p>
-<p>exp：</p>
-<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-27_01-44-12.png"></p>
-<p><img src="/images/ciscn_2019_c_1/Snipaste_2023-02-27_01-43-17.png"></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/02/26/ciscn_2019_c_1/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-bjdctf_2020_babystack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="bjdctf-2020-babystack"><a href="#bjdctf-2020-babystack" class="headerlink" title="bjdctf_2020_babystack"></a>bjdctf_2020_babystack</h2><p><img src="/images/bjdctf_2020_babystack/Snipaste_2023-02-12_20-33-23.png"></p>
-<p>查看main函数，其中有一个read函数，读取长度由上面的scanf函数决定，所以可以输入一个很大的数，造成溢出。</p>
-<p>发现题里给了后门函数<img src="/images/bjdctf_2020_babystack/Snipaste_2023-02-12_21-47-41.png"></p>
-<p>可以直接获取shell</p>
-<p>exp</p>
-<p><img src="/images/bjdctf_2020_babystack/Snipaste_2023-02-12_21-49-00.png"></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/02/12/bjdctf_2020_babystack/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jarvisoj_level2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="jarvisoj-level2"><a href="#jarvisoj-level2" class="headerlink" title="jarvisoj_level2"></a>jarvisoj_level2</h1><p>用shift+f12可以看到有bin&#x2F;sh字符串，但是没有调用的函数，，应该是ret2syscall的题</p>
-<p><img src="/images/jarvisoj_level2/Snipaste_2023-02-05_22-04-34.png"></p>
-<p>主函数中调用函数里有一个read函数，读取数量大于buf容量，可以栈溢出</p>
-<p><img src="/images/jarvisoj_level2/Snipaste_2023-02-06_00-28-04.png"></p>
-<p>再查看system函数地址和bin&#x2F;sh地址，构造payload</p>
-<p>exp</p>
-<p><img src="/images/jarvisoj_level2/Snipaste_2023-02-05_22-40-27.png"></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/02/05/jarvisoj_level2/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ciscn_2019_n_8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="ciscn-2019-n-8"><a href="#ciscn-2019-n-8" class="headerlink" title="ciscn_2019_n_8"></a>ciscn_2019_n_8</h1><p>观察函数易知，var[13]&#x3D;17即可运行system函数获取shell</p>
-<p><img src="/images/ciscn_2019_n_8/Snipaste_2023-02-05_00-00-06.png"></p>
-<p>var视作一个int形式数组，qword是八个字节，用p64打包</p>
-<p><img src="/images/ciscn_2019_n_8/Snipaste_2023-02-04_23-53-16.png"></p>
-<p>exp</p>
-<p><img src="/images/ciscn_2019_n_8/Snipaste_2023-02-04_23-59-20.png"></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/02/04/ciscn_2019_n_8/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ciscn_2019_n_1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="ciscn-2019-n-1"><a href="#ciscn-2019-n-1" class="headerlink" title="ciscn_2019_n_1"></a>ciscn_2019_n_1</h1><p>拖入ida查看函数，发现当v2&#x3D;11.28125会运行system函数，直接获取flag</p>
-<p><img src="/images/ciscn_2019_n_1/Snipaste_2023-02-03_21-37-52-16755254756741.png"></p>
-<p>但是函数里的gets是输入v1的数值，需要输入长数据溢出到v2所在地址。</p>
-<p>查看v1和v2地址</p>
-<p><img src="/images/ciscn_2019_n_1/Snipaste_2023-02-03_22-24-12-16755254860223.png"></p>
-<p>写入44个字节给v1便可将数据写入v2</p>
-<p>exp</p>
-<p>from pwn import*</p>
-<p> io&#x3D;remote(‘node4.buuoj.cn’,29943) payload&#x3D;b’a’*0x2c+p64(0x41348000)</p>
-<p> io.sendline(payload)</p>
-<p> io.interactive()</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/02/03/ciscn_2019_n_1/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-[第五空间2019 决赛]PWN5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="第五空间2019-决赛-PWN5"><a href="#第五空间2019-决赛-PWN5" class="headerlink" title="[第五空间2019 决赛]PWN5"></a>[第五空间2019 决赛]PWN5</h1><p><img src="/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_19-18-10.png"></p>
-<p>有printf函数，可以利用格式化字符串漏洞</p>
-<p>main函数作用是将输入数字与随机数对比，相同便可直接执行system函数。</p>
-<p>可以将随机数修改为已知数从而得到flag</p>
-<p><img src="/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_20-29-31.png"></p>
-<p>可以看到写入数据在栈的第十位</p>
-<p>再找到随机数变量所在地址，便可写出exp</p>
-<p><img src="/images/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/Snipaste_2023-01-23_21-21-45.png"></p>
-<p>payload&#x3D;密码所在地址加%n</p>
-<p>由于p32长四个字节，所以密码是4</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/01/23/%5B%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B42019%20%E5%86%B3%E8%B5%9B%5DPWN5/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jarvisoj_level0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="jarvisoj-level0"><a href="#jarvisoj-level0" class="headerlink" title="jarvisoj_level0"></a>jarvisoj_level0</h1><p>分析vulnerable_function函数</p>
-<p><img src="/images/jarvisoj_level0/Snipaste_2023-01-23_00-54-04.png"></p>
-<p>buf占用空间小于read函数可写入数据，可以使用栈溢出</p>
-<p>找到后门函数地址</p>
-<p><img src="/images/jarvisoj_level0/Snipaste_2023-01-22_15-07-34-16743713614164.png"></p>
-<p>由于是64位程序，rsp应该占用8字节</p>
-<p>可写出exp</p>
-<p>from pwn import *</p>
-<p>io &#x3D; remote(‘node4.buuoj.cn’, 28712)<br>payload &#x3D; b’a‘*（0x80+8）+ p64(0x400596)<br>io.sendline(payload)<br>io.interactive() </p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/01/22/jarvisoj_level0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pwn1_sctf_2016" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="pwn1-sctf-2016"><a href="#pwn1-sctf-2016" class="headerlink" title="pwn1_sctf_2016"></a>pwn1_sctf_2016</h1><p>分析vuln函数</p>
-<p><img src="/images/pwn1_sctf_2016/Snipaste_2023-01-22_11-57-16.png"></p>
-<p>fget函数限制输入，看似无法栈溢出，但下方有一个replace函数，可以将i替换为you，那么就可以通过输入i从而造成栈溢出</p>
-<p>其他步骤与前面题解法相似</p>
-<p><img src="/images/pwn1_sctf_2016/Snipaste_2023-01-22_13-41-55.png"></p>
-<p>查看栈长度，需要填充0x20+4个字节的数据</p>
-<p>再查看返回flag函数的地址</p>
-<p><img src="/images/pwn1_sctf_2016/Snipaste_2023-01-22_13-45-05.png"></p>
-<p>便可由此写出exp</p>
-<p>from pwn import *</p>
-<p>io &#x3D; remote(‘node4.buuoj.cn’, 28712)<br>payload &#x3D; b’I’*21 + b’a’*1 + p32(0x8048F0D)<br>io.sendline(payload)<br>io.interactive() </p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/01/21/pwn1_sctf_2016/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-warmup_csaw_2016" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="warmup-csaw-2016"><a href="#warmup-csaw-2016" class="headerlink" title="warmup_csaw_2016"></a>warmup_csaw_2016</h2><p>照例用ida打开，没发现bin&#x2F;sh，用shift+f12，发现cat flag.txt</p>
-<p>双击到达所在地址</p>
-<p><img src="/images/warmup_csaw_2016/Snipaste_2023-01-15_20-11-42.png"></p>
-<p>然后右键X</p>
-<p><img src="/images/warmup_csaw_2016/Snipaste_2023-01-15_20-12-41.png"></p>
-<p>发现输出flag的函数</p>
-<p><img src="/images/warmup_csaw_2016/Snipaste_2023-01-15_20-13-17.png"></p>
-<p>记下地址</p>
-<p>再看主函数，发现get，又是栈溢出</p>
-<p><img src="/images/warmup_csaw_2016/Snipaste_2023-01-15_20-14-27.png"></p>
-<p>查看v5地址</p>
-<p><img src="/images/warmup_csaw_2016/Snipaste_2023-01-15_20-15-07.png"></p>
-<p>需要输入64+8个字节的数据</p>
-<p>可得exp</p>
-<p><img src="/images/warmup_csaw_2016/Snipaste_2023-01-15_20-09-56.png"></p>
-<p>得到flag</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/01/15/warmup_csaw_2016/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+    </div></section>
   
+
+    
 
 
           </div>
@@ -856,9 +286,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
